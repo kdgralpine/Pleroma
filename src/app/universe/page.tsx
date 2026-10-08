@@ -1,113 +1,48 @@
-﻿import PageHero from "@/components/PageHero";
+import type { Metadata } from "next";
+import Link from "next/link";
+import PageHero from "@/components/PageHero";
 
-const factions = [
-  { name: "Monad", type: "Divine", desc: "The unknowable true God. Singular perfect light from which all reality emanates. Not a creator but a source — the Pleroma is light radiating outward from the Monad. Sacrificed himself, scattering divine sparks into every human soul." },
-  { name: "Pleroma", type: "Realm", desc: "The divine fullness — the true home of light. A realm only accessible to those with sufficient Divine Light. Where the Aeons dwell and the true God's emanations persist." },
-  { name: "Kenoma", type: "Realm", desc: "The material void-world. The corrupted reality ruled by Yaldabaoth. Citizens live their lives unaware of the spiritual war above and beneath them." },
-  { name: "Sophia", type: "Aeon", desc: "The first Aeon born of the Monad. Her fall — acting alone to grasp the nature of the Monad without consent — accidentally produced the Demiurge. Her grief and guilt shape the spiritual undercurrent of the world." },
-  { name: "Yaldabaoth (Demiurge)", type: "Antagonist", desc: "The evil twin who killed or imprisoned the true God and now wears his face. Rules every realm, every angel, every law of reality. Jealous not of human power but of the intimacy of being loved and chosen. The world is his cosmic comedy." },
-  { name: "Aeons", type: "Divine", desc: "Divine emanations of the Monad — the higher beings of the Pleroma. Each Aeon embodies an aspect of the true God's nature. Some have fallen, some resist, some are lost." },
-  { name: "Archons", type: "Enemy", desc: "Servants of Yaldabaoth. Enforcers of the material prison. They manage the machinery of the Kenoma and ensure humans remain unawakened and harvestable." },
-  { name: "Divine Generals of Yaldabaoth", type: "Enemy", desc: "The Bleach-captain analogue. Twelve named figures of immense power who serve the Demiurge. Each controls a domain of the spirit world. Several may be sympathetic — or secretly apostates." },
-  { name: "Apostles of Yaldabaoth", type: "Enemy", desc: "The religious cult posing as servants of the true God. They perform the sacrificial rituals that harvest human Divine Light and feed it to Yaldabaoth. The public believes them to be holy." },
-  { name: "Apostates", type: "Faction", desc: "Former members of the Apostles who broke from the cult after learning the truth. Hunted. Some have found the Pneumatics. Others walk alone." },
-  { name: "Pneumatics", type: "Human", desc: "Spiritually awakened humans — they can perceive and interact with the Pleroma and its inhabitants. Only Pneumatics can see the Watchers. The rarest kind of person." },
-  { name: "Psychics", type: "Human", desc: "Partially awakened humans. Aware of the spiritual world but not fully initiated. Often drafted into the Apostles' structure or hunted as threats to the order." },
-  { name: "Hylics", type: "Human", desc: "Unawakened humans. Fully material. Cannot perceive the spirit world in any form. The vast majority of the population. Not lesser — simply asleep." },
-  { name: "The Watchers", type: "Entity", desc: "Ancient observers that exist between the Kenoma and the Pleroma. Only the spiritually inclined can see them. Their reactions to being noticed vary wildly — some are curious, some are hostile, some are bound by old laws." },
-  { name: "Blue People of the Desert", type: "Faction", desc: "A people group living on the edge of the known world. They retained fragments of the true God's knowledge across generations, preserving it in ritual and oral tradition the Apostles have tried to erase." },
-  { name: "Demons", type: "Enemy", desc: "Ranked D through S+. Creatures born from corrupted Abyss energy. Some serve the Archons. Others are escaped fragments of broken souls. The S+ class approach the power of the lesser Divine Generals." },
-  { name: "Divine Light", type: "Power", desc: "The inner magic system. Ki and Haki analogue — spiritual energy from the divine spark present in every human. Can manifest as aura, heightened ability, perception of the spirit world, and at high levels, entry into the Pleroma itself. The Apostles work to dull and harvest it." },
+export const metadata: Metadata = { title: "Universe | Pleroma", description: "The Kenoma, the Monad, Sophia, and Yaldabaoth: explore Pleroma's developing dark fantasy world." };
+const pillars = [
+  { name: "The Monad", type: "The hidden source", desc: "When the Monad withdrew, its essence scattered into human souls as divine sparks. Its presence is internal rather than granted by the world's hierarchy. The protagonist's mark connects their awakening to the Pleroma." },
+  { name: "Sophia", type: "The fracture", desc: "Sophia's fracture gave rise to Yaldabaoth and the material world. Her role is tragic rather than evil: she seeks to correct what was broken. The journey toward the Pleroma is also drawn toward her." },
+  { name: "Yaldabaoth", type: "The Demiurge", desc: "Born from Sophia's fracture, Yaldabaoth built the world's hierarchies and believes himself supreme because he has not seen what lies above him. He can command obedience, but cannot manufacture the bond between humanity and the Monad." },
 ];
-
-const typeColors: Record<string, string> = {
-  Divine: "text-[#bfdbfe]",
-  Realm: "text-[#a855f7]",
-  Aeon: "text-[#d4af37]",
-  Antagonist: "text-red-400",
-  Enemy: "text-red-400",
-  Faction: "text-[#34d399]",
-  Human: "text-[#94a3b8]",
-  Entity: "text-[#a855f7]",
-  Power: "text-[#d4af37]",
-};
-
-const cosmology = [
-  { from: "The Monad", arrow: "emanates", to: "The Pleroma" },
-  { from: "The Pleroma", arrow: "births", to: "The Aeons" },
-  { from: "Sophia (fallen Aeon)", arrow: "accidentally creates", to: "Yaldabaoth" },
-  { from: "Yaldabaoth", arrow: "imprisons / wears face of", to: "The Monad" },
-  { from: "Yaldabaoth", arrow: "creates and rules", to: "The Kenoma" },
-  { from: "The Monad (sacrifice)", arrow: "scatters sparks into", to: "Human Souls" },
-  { from: "Human Souls", arrow: "can awaken to", to: "Divine Light → Pleroma" },
+const groups = [
+  { title: "Realms & perception", entries: [
+    { name: "The Kenoma", desc: "The material world under Yaldabaoth's order. Its people inherit an official account of reality, while the spiritual layer and suppressed history remain beyond ordinary perception." },
+    { name: "The Pleroma", desc: "The realm of the true source. Awakening changes what a person can perceive and how they can cross the boundaries of the world. Death is one possible threshold, rather than the only route." },
+    { name: "Dreams", desc: "A threshold where the hidden order can reach the protagonist and the Monad's mark may first speak. Dreams belong to the world's unease, rather than offering a safe escape from it." },
+  ] },
+  { title: "Authority & resistance", entries: [
+    { name: "The Church", desc: "The dominant religious order serves Yaldabaoth without revealing the true nature of its god. Its authority shapes public belief and the protagonist's early place in the world." },
+    { name: "The Archons", desc: "Yaldabaoth's generals: a corrupted mirror of divine hierarchy. They embody the power of the order that awakening calls into question." },
+    { name: "The Aeons", desc: "The Monad's true emanations, largely absent or imprisoned. Their absence is part of the distance between the world's official order and its hidden source." },
+    { name: "Those who remember", desc: "A persecuted minority understands that the true source is within humanity. Their knowledge challenges the Church's account of where power and meaning come from." },
+  ] },
+  { title: "Lives caught between worlds", entries: [
+    { name: "The Protagonist", desc: "A prince or princess and trained demon hunter, raised inside the Church's system. A vision introduces a crack in that worldview. Their journey asks whether they are an instrument of fate or someone who can break its pattern." },
+    { name: "The Enigmatic Guide", desc: "An emissary of the Monad who appears at threshold moments. The Guide walks with the protagonist through suffering rather than rescuing them, pointing toward self-reliance, Sophia, and the Pleroma." },
+    { name: "The Companions", desc: "The central trio explores different answers to a shared wound: inner liberation, obedience to external authority, and a third perspective still taking shape. Their relationships and fates are part of the developing narrative." },
+    { name: "The Frog Knights", desc: "Beings who exist in both physical and astral layers. The Church calls them demons, yet their dual nature places them closer to truths their persecutors cannot see." },
+  ] },
+];
+const awakening = [
+  { name: "Unawakened", desc: "The spiritual layer remains unseen." },
+  { name: "First Awakening", desc: "Inner light surfaces; perception begins to change." },
+  { name: "Deepening", desc: "The inner world begins to reflect outward, drawing spiritual attention." },
+  { name: "Full Awakening", desc: "Self-confrontation deepens, and stronger threats take notice." },
+  { name: "Gnosis", desc: "A philosophical and narrative state, rather than simply another combat rank." },
 ];
 
 export default function UniversePage() {
-  return (
-    <>
-      <PageHero
-        label="Lore & Cosmology"
-        title="The Universe of Pleroma"
-        subtitle="A world built on Gnostic cosmology, corporate religion, and the suppressed memory of a God who loved you enough to become you."
-        accent="void"
-      />
-
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 py-16 space-y-24">
-
-        {/* Cosmology chain */}
-        <section>
-          <p className="text-xs tracking-[0.4em] uppercase text-[#d4af37] mb-8">The Cosmological Chain</p>
-          <div className="space-y-px">
-            {cosmology.map(({ from, arrow, to }, i) => (
-              <div key={i} className="bg-[#0d0820] border border-[rgba(212,175,55,0.08)] px-6 py-4 flex flex-wrap items-center gap-3">
-                <span className="font-[family-name:var(--font-cinzel)] text-sm text-[#d4af37]">{from}</span>
-                <span className="text-xs text-[#475569] italic">{arrow}</span>
-                <span className="font-[family-name:var(--font-cinzel)] text-sm text-[#e2e8f0]">{to}</span>
-              </div>
-            ))}
-          </div>
-        </section>
-
-        {/* World lore summary */}
-        <section className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-          <div>
-            <p className="text-xs tracking-[0.4em] uppercase text-[#d4af37] mb-4">The World</p>
-            <h2 className="font-[family-name:var(--font-cinzel)] text-2xl font-bold text-white mb-6">A Religious Empire</h2>
-            <p className="text-[#94a3b8] leading-relaxed mb-4">
-              The Apostles of Yaldabaoth control the known world under the banner of a benevolent God — a face they have carefully maintained for centuries. Their mages use Void and Abyss power, though this is hidden from the public at the start of the story.
-            </p>
-            <p className="text-[#94a3b8] leading-relaxed">
-              Citizens are taught to surrender their inner Divine Light to the &quot;oneness of the void&quot; — framed as holy devotion. In reality, it feeds Yaldabaoth. A spiritual surveillance machine, a Golem harvesting the one thing he was never given: the intimacy of being chosen.
-            </p>
-          </div>
-          <div>
-            <p className="text-xs tracking-[0.4em] uppercase text-[#d4af37] mb-4">The Two Gods</p>
-            <h2 className="font-[family-name:var(--font-cinzel)] text-2xl font-bold text-white mb-6">The Twins</h2>
-            <p className="text-[#94a3b8] leading-relaxed mb-4">
-              They were twins. One — the Monad — loved humanity enough to sacrifice himself and hide inside them. The other — Yaldabaoth — took his throne, his name, and his face. He rules out of cosmic apathy mixed with jealousy.
-            </p>
-            <p className="text-[#94a3b8] leading-relaxed">
-              He is not purely malicious. An omnipotent being cannot evolve. Humanity — finite, flawed, surprising — is the only thing in existence that can. He watches them suffer because their suffering is the only thing that is still interesting to him.
-            </p>
-          </div>
-        </section>
-
-        {/* Factions */}
-        <section>
-          <p className="text-xs tracking-[0.4em] uppercase text-[#d4af37] mb-8">Factions & Terms</p>
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-px bg-[rgba(212,175,55,0.08)]">
-            {factions.map(({ name, type, desc }) => (
-              <div key={name} className="bg-[#07040d] p-6 hover:bg-[#0d0820] transition-colors">
-                <div className="flex items-baseline gap-3 mb-3">
-                  <h3 className="font-[family-name:var(--font-cinzel)] text-base font-semibold text-white">{name}</h3>
-                  <span className={`text-[10px] tracking-[0.2em] uppercase ${typeColors[type] ?? "text-[#94a3b8]"}`}>{type}</span>
-                </div>
-                <p className="text-[#94a3b8] text-sm leading-relaxed">{desc}</p>
-              </div>
-            ))}
-          </div>
-        </section>
-      </div>
-    </>
-  );
+  return <><PageHero label="Universe / Developing Lore" title="Truth Beneath the Kenoma" subtitle="An original dark fantasy world of hidden history, divine sparks, and the struggle between inner freedom and imposed authority." accent="void" />
+    <div className="max-w-6xl mx-auto px-4 sm:px-6 pb-20 space-y-16">
+      <section className="world-opening"><p className="development-label">The world you inherit</p><h2>A sacred order.<br /><span>A hidden fracture.</span></h2><p>The Church gives the world its laws, its enemies, and its account of the divine. The protagonist begins inside that certainty. As their inner light awakens, familiar truths become less certain and the boundary between material and spiritual life begins to change.</p><p>The story unfolds through revelations across the main journey and side content. Its central question stays open: are you following a fate written for you, or learning how to break the pattern?</p></section>
+      <section><p className="development-label mb-5">The three pillars</p><div className="development-grid">{pillars.map(item => <article className="development-card" key={item.name}><p className="development-label">{item.type}</p><h3>{item.name}</h3><p>{item.desc}</p></article>)}</div></section>
+      <section className="world-note"><p className="development-label">Two sources of power</p><div className="creative-grid"><article><h3>The gift of hierarchy</h3><p>Yaldabaoth offers power through obedience: believe, belong, and submit to the order that grants it.</p></article><article><h3>The spark within</h3><p>The Monad&apos;s spark is already inside the protagonist. Awakening is self-confrontation, not an inheritance or a gift the hierarchy can revoke.</p></article></div></section>
+      {groups.map(group => <section key={group.title}><h2 className="font-[family-name:var(--font-cinzel)] text-2xl text-white mb-6">{group.title}</h2><div className="grid sm:grid-cols-2 gap-4">{group.entries.map(item => <article key={item.name} className="development-card"><h3>{item.name}</h3><p>{item.desc}</p></article>)}</div></section>)}
+      <section><p className="development-label">Awakening / Design direction</p><h2 className="font-[family-name:var(--font-cinzel)] text-2xl text-white mt-3 mb-5">More than a measure of strength.</h2><p className="text-[#94a3b8] text-sm leading-relaxed max-w-2xl mb-6">Awakening changes how a character exists in the world, not just what they can do. Greater awareness also brings greater exposure to the forces that police it.</p><ol className="awakening-list">{awakening.map((item,i) => <li key={item.name}><span className="development-number">0{i}</span><div><h3>{item.name}</h3><p>{item.desc}</p></div></li>)}</ol></section>
+      <aside className="world-note"><p className="development-label">A world still taking shape</p><p>This page reflects the current narrative direction. Character details, the cost of awakening, and the paths through the story continue to develop. Pleroma draws from Gnostic ideas as the foundation for an original myth.</p><Link className="development-link" href="/details#development">Explore the art and systems behind the world &rarr;</Link></aside>
+    </div></>;
 }

@@ -17,14 +17,14 @@ const pillars = [
   {
     label: "Multiplayer",
     title: "Fight. Build. Ascend.",
-    desc: "Ranked PvP from 1v1 to 5v5, survival waves, procedural dungeons, and a full Forge suite for custom maps and game modes. The Halo 3 spirit lives here.",
+    desc: "Explore developing duel, deathmatch, and objective modes alongside survival, seeded dungeons, and local Forge creation. Ranked play and community sharing remain longer-term goals.",
     icon: "◈",
   },
 ];
 
 const factionTeases = [
   { name: "The Monad", desc: "The unknowable true God. The source of all light." },
-  { name: "Yaldabaoth", desc: "The false god. The Demiurge who wears the true God's face." },
+  { name: "Yaldabaoth", desc: "The Demiurge. Born from Sophia's fracture, certain of his own supremacy." },
   { name: "The Pneumatics", desc: "Spiritually awakened humans — they can see what others cannot." },
   { name: "The Archons", desc: "Enforcers of the material prison. Servants of the Demiurge." },
 ];
@@ -108,7 +108,7 @@ export default function Home() {
           <p className="text-center text-xs tracking-[0.4em] uppercase text-[#d4af37] mb-4">The World</p>
           <h2 className="font-[family-name:var(--font-cinzel)] text-3xl sm:text-4xl font-bold text-center text-white mb-6">A Cosmos Ruled by Lies</h2>
           <p className="text-center text-[#94a3b8] max-w-2xl mx-auto mb-16 leading-relaxed">
-            The true God sacrificed himself, scattering divine sparks into every human soul. A jealous twin took his place — and has ruled every realm, every angel, every law of reality ever since.
+            The Monad withdrew, leaving divine sparks within humanity. Born from Sophia&apos;s fracture, Yaldabaoth built an order that claims to hold every answer. Awakening begins where that certainty breaks.
           </p>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-px bg-[rgba(212,175,55,0.08)]">
             {factionTeases.map(({ name, desc }) => (
@@ -132,7 +132,7 @@ export default function Home() {
           <p className="text-xs tracking-[0.4em] uppercase text-[#d4af37] mb-4">Game Modes</p>
           <h2 className="font-[family-name:var(--font-cinzel)] text-3xl sm:text-4xl font-bold text-white mb-6">Every Way to Play</h2>
           <p className="text-[#94a3b8] mb-12 leading-relaxed">
-            Story co-op. Ranked 5v5. Procedural dungeons. Survival waves. Full Forge suite. One universe, infinite ways to ascend.
+            A story prologue, wave survival, seeded dungeon runs, PvP prototypes, and a local Forge editor. Discover the current modes and the direction beyond them.
           </p>
           <Link href="/modes" className="inline-flex items-center gap-2 border border-[rgba(212,175,55,0.4)] text-[#d4af37] px-8 py-3 text-xs tracking-[0.3em] uppercase hover:border-[#d4af37] hover:bg-[rgba(212,175,55,0.05)] transition-all">
             See All Modes

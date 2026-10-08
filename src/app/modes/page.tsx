@@ -1,90 +1,32 @@
+import type { Metadata } from "next";
+import Link from "next/link";
 import PageHero from "@/components/PageHero";
 
-const modes = [
-  {
-    category: "Campaign",
-    items: [
-      {
-        name: "Story",
-        tag: "Solo / Co-op",
-        desc: "The full narrative campaign. Begin in the Kenoma, uncover the corruption of the Church, die or awaken, and traverse the spirit realm toward the Pleroma. Supports full co-op throughout.",
-      },
-    ],
-  },
-  {
-    category: "PvE",
-    items: [
-      {
-        name: "Survival",
-        tag: "1–4 Players",
-        desc: "Wave-based combat against escalating demon ranks — D through S+. Each wave harder than the last. Last as long as possible. Leaderboards per player count.",
-      },
-      {
-        name: "Procedural Dungeons",
-        tag: "1–4 Players",
-        desc: "Roguelike-style dungeons with unique layouts, enemy combinations, and loot every run. No two runs are the same. Unlock permanent upgrades across attempts.",
-      },
-    ],
-  },
-  {
-    category: "PvP",
-    items: [
-      { name: "1v1", tag: "Duel", desc: "Pure skill expression. One opponent, no distractions." },
-      { name: "2v2", tag: "Team", desc: "Tight coordination required. Two-man squads." },
-      { name: "3v3", tag: "Team", desc: "Squad play begins here. Communication and roles matter." },
-      { name: "4v4", tag: "Team", desc: "Larger team dynamics and map control." },
-      { name: "5v5", tag: "Team", desc: "Full squad. Coordinated ultimates and strategies." },
-    ],
-  },
-  {
-    category: "Ranked & Casual",
-    items: [
-      {
-        name: "Ranked",
-        tag: "Competitive",
-        desc: "Seasonal competitive ladder. Climb from Hylics to Pneumatic to Aeon tier.",
-      },
-      {
-        name: "Casual",
-        tag: "No Rank Impact",
-        desc: "Same modes, no stakes. Experiment freely.",
-      },
-    ],
-  },
-  {
-    category: "Creation",
-    items: [
-      {
-        name: "Forge",
-        tag: "Community",
-        desc: "Build custom maps, design game modes, set rules, place enemies. Share with community. The Halo 3 Forge spirit.",
-      },
-    ],
-  },
+export const metadata: Metadata = { title: "Modes | Pleroma", description: "Explore the story, survival, dungeon, PvP, and Forge modes being developed for Pleroma." };
+const groups = [
+  { category: "Story & PvE", items: [
+    { name: "Story", tag: "Prologue in development", desc: "Enter the Kenoma as a prince or princess trained to hunt demons within the Church's order. A vision fractures that certainty. The current story work begins with the prologue; the wider campaign follows awakening, hidden history, and choices that shape the journey." },
+    { name: "Wave Survival", tag: "Combat prototype", desc: "Face escalating waves of enemies and elites. Survival puts combat variety, movement, and sustained pressure at the center of each session. The design treats each run as self-contained, without survival-specific progression carried between sessions." },
+    { name: "Procedural Dungeon", tag: "Run-based prototype", desc: "Explore seeded dungeon layouts and clear encounters room by room. The current dungeon mode is a standalone run. Deeper floor progression, stacking modifiers, and the wider bonfire-linked roguelite loop remain longer-term design goals." },
+  ] },
+  { category: "Player versus player", items: [
+    { name: "Duel", tag: "Round-based 1v1", desc: "Fight one opponent across rounds. Guard, parry, posture, and loadout choices bring the combat system into a direct contest of timing and pressure." },
+    { name: "Team Deathmatch", tag: "Team combat", desc: "Two sides compete to reach the score limit. Coordinate pressure, protect teammates, and turn individual combat skill into a shared result." },
+    { name: "Free-for-All", tag: "Individual combat", desc: "Every player competes independently to reach the score limit. Read the fight, choose your engagements, and manage threats from more than one direction." },
+    { name: "Gun Game", tag: "Style ladder", desc: "Each elimination advances you through a ladder of combat styles. Finish the ladder to win. The mode tests adaptability across the roster rather than mastery of a single loadout." },
+    { name: "Capture the Flag", tag: "Team objective", desc: "Take the opposing flag and carry it back to your side to score. Attack, defense, and movement matter as much as winning individual fights." },
+    { name: "Domination", tag: "Control points", desc: "Capture and hold control points to earn score over time. Teams must balance combat pressure with positioning and control of the arena." },
+  ] },
+  { category: "Creation", items: [
+    { name: "Forge", tag: "Local creation prototype", desc: "Build a level with blocks, props, enemies, and gameplay markers, then playtest it. Maps use the same level-data pipeline as the game. The current editor is standalone and saves locally; community publishing and Workshop integration are longer-term goals." },
+  ] },
 ];
 
 export default function ModesPage() {
-  return (
-    <>
-      <PageHero label="Game Modes" title="Every Way to Play" subtitle="From story campaign to ranked 5v5, procedural dungeons to community Forge creations." />
-      <div className="max-w-5xl mx-auto px-4 sm:px-6 py-16 space-y-16">
-        {modes.map(({ category, items }) => (
-          <section key={category}>
-            <p className="text-xs tracking-[0.4em] uppercase text-[#d4af37] mb-6">{category}</p>
-            <div className="space-y-px bg-[rgba(212,175,55,0.08)]">
-              {items.map(({ name, tag, desc }) => (
-                <div key={name} className="bg-[#07040d] p-6 sm:p-8 hover:bg-[#0d0820] transition-colors">
-                  <div className="flex flex-wrap items-baseline gap-3 mb-3">
-                    <h3 className="font-[family-name:var(--font-cinzel)] text-xl font-semibold text-white">{name}</h3>
-                    <span className="text-[10px] tracking-[0.25em] uppercase text-[#475569] border border-[rgba(255,255,255,0.08)] px-2 py-0.5">{tag}</span>
-                  </div>
-                  <p className="text-[#94a3b8] leading-relaxed">{desc}</p>
-                </div>
-              ))}
-            </div>
-          </section>
-        ))}
-      </div>
-    </>
-  );
+  return <><PageHero label="Modes / In Development" title="Choose Your Battlefield" subtitle="Story, survival, dungeon runs, competitive encounters, and spaces of your own. A look at the modes taking shape in Pleroma." />
+    <div className="max-w-5xl mx-auto px-4 sm:px-6 pb-20 space-y-14">
+      <aside className="world-note"><p className="development-label">Development snapshot</p><p>These modes describe the current development build and its direction, not a released feature list. Multiplayer capacity and online behavior are still being tested. Ranked seasons, matchmaking, and community sharing are not presented as released services.</p></aside>
+      {groups.map(({category,items}) => <section key={category}><h2 className="font-[family-name:var(--font-cinzel)] text-2xl text-white mb-6">{category}</h2><div className="grid sm:grid-cols-2 gap-4">{items.map(({name,tag,desc}) => <article key={name} className="development-card"><p className="development-label">{tag}</p><h3>{name}</h3><p>{desc}</p></article>)}</div></section>)}
+      <aside className="world-note"><p className="development-label">Longer-term direction</p><h2 className="font-[family-name:var(--font-cinzel)] text-xl text-white mt-3 mb-4">Beyond the current build</h2><p>The wider design explores campaign co-op, larger competitive formats, ranked and casual play, a deeper roguelite loop, and community-created content. Scope and rules will evolve through development and playtesting.</p><Link className="development-link" href="/details#development">See how the game is being built &rarr;</Link></aside>
+    </div></>;
 }

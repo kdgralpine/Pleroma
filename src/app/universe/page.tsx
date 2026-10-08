@@ -77,7 +77,7 @@ export default function UniversePage() {
               The Apostles of Yaldabaoth control the known world under the banner of a benevolent God — a face they have carefully maintained for centuries. Their mages use Void and Abyss power, though this is hidden from the public at the start of the story.
             </p>
             <p className="text-[#94a3b8] leading-relaxed">
-              Citizens are taught to surrender their inner Divine Light to the "oneness of the void" — framed as holy devotion. In reality, it feeds Yaldabaoth. A spiritual surveillance machine, a Golem harvesting the one thing he was never given: the intimacy of being chosen.
+              Citizens are taught to surrender their inner Divine Light to the &quot;oneness of the void&quot; — framed as holy devotion. In reality, it feeds Yaldabaoth. A spiritual surveillance machine, a Golem harvesting the one thing he was never given: the intimacy of being chosen.
             </p>
           </div>
           <div>

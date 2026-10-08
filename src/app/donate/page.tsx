@@ -32,7 +32,7 @@ export default function DonatePage() {
         {/* Mission statement */}
         <section className="text-center max-w-2xl mx-auto">
           <p className="text-[#94a3b8] leading-relaxed">
-            Pleroma is built by a small, passionate team. We're not backed by venture capital. Every supporter directly funds development, art, servers, and keeps us independent. Your support isn't just a purchase — it's a partnership.
+            Pleroma is built by a small, passionate team. We&apos;re not backed by venture capital. Every supporter directly funds development, art, servers, and keeps us independent. Your support isn&apos;t just a purchase — it&apos;s a partnership.
           </p>
         </section>
 
@@ -85,13 +85,13 @@ export default function DonatePage() {
           </p>
           <p className="font-semibold text-white mb-4">Can I cancel anytime?</p>
           <p className="text-[#94a3b8] text-sm leading-relaxed">
-            Yes. Subscriptions can be cancelled anytime. You'll keep access to your perks for the month already paid.
+            Yes. Subscriptions can be cancelled anytime. You&apos;ll keep access to your perks for the month already paid.
           </p>
         </section>
 
         {/* Other options */}
         <section className="text-center">
-          <p className="text-[#94a3b8] mb-6">Prefer one-time purchases? Check out our in-game cosmetics or grab a limited edition physical collector's edition when it launches.</p>
+          <p className="text-[#94a3b8] mb-6">Prefer one-time purchases? Check out our in-game cosmetics or grab a limited edition physical collector&apos;s edition when it launches.</p>
           <Link href="/store" className="inline-flex items-center gap-2 border border-[rgba(212,175,55,0.4)] text-[#d4af37] px-6 py-3 text-xs tracking-[0.3em] uppercase hover:bg-[rgba(212,175,55,0.05)] transition-all">
             Browse Store
           </Link>

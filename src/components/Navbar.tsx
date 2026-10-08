@@ -32,7 +32,7 @@ export default function Navbar() {
         </Link>
 
         {/* Desktop nav */}
-        <div className="hidden lg:flex items-center gap-1">
+        <div className="hidden xl:flex items-center gap-1">
           {links.map(({ href, label }) => (
             <Link
               key={href}
@@ -50,17 +50,18 @@ export default function Navbar() {
 
         {/* Steam CTA */}
         <a
-          href="#"
-          className="hidden lg:inline-flex items-center gap-2 border border-[#d4af37] text-[#d4af37] hover:bg-[#d4af37] hover:text-black px-4 py-1.5 text-xs tracking-widest uppercase transition-all shrink-0"
+          href="/details#development"
+          className="hidden xl:inline-flex items-center gap-2 border border-[#d4af37] text-[#d4af37] hover:bg-[#d4af37] hover:text-black px-4 py-1.5 text-xs tracking-widest uppercase transition-all shrink-0"
         >
-          Wishlist
+          Behind the Game
         </a>
 
         {/* Mobile hamburger */}
         <button
-          className="lg:hidden text-[#94a3b8] hover:text-[#e2e8f0] p-1"
+          className="xl:hidden text-[#94a3b8] hover:text-[#e2e8f0] p-1"
           onClick={() => setOpen(!open)}
           aria-label="Toggle menu"
+          aria-expanded={open}
         >
           <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             {open ? (
@@ -74,7 +75,7 @@ export default function Navbar() {
 
       {/* Mobile menu */}
       {open && (
-        <div className="lg:hidden border-t border-[rgba(212,175,55,0.15)] bg-[#07040d] px-4 py-4">
+        <div className="xl:hidden border-t border-[rgba(212,175,55,0.15)] bg-[#07040d] px-4 py-4">
           <div className="flex flex-col gap-1">
             {links.map(({ href, label }) => (
               <Link
@@ -91,10 +92,10 @@ export default function Navbar() {
               </Link>
             ))}
             <a
-              href="#"
+              href="/details#development"
               className="mt-2 text-center border border-[#d4af37] text-[#d4af37] py-2.5 text-sm tracking-widest uppercase"
             >
-              Wishlist on Steam
+              Behind the Game
             </a>
           </div>
         </div>

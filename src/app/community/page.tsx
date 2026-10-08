@@ -1,5 +1,4 @@
 import PageHero from "@/components/PageHero";
-import Link from "next/link";
 
 export default function CommunityPage() {
   return (

@@ -1,6 +1,7 @@
 ﻿"use client";
 
 import PageHero from "@/components/PageHero";
+import DevelopmentStory from "@/components/DevelopmentStory";
 import { useState } from "react";
 
 const weapons = [
@@ -66,19 +67,25 @@ export default function DetailsPage() {
   return (
     <>
       <PageHero
-        label="Game Details"
-        title="Arsenal & Codex"
-        subtitle="Weapons, enemies, and the two power systems that define every encounter in Pleroma."
+        label="Game Details / Behind the Game"
+        title="A World in the Making"
+        subtitle="The engineering, original art, and dark fantasy lore shaping Pleroma."
       />
 
       <div className="max-w-6xl mx-auto px-4 sm:px-6 py-16">
+        <DevelopmentStory />
+        <section id="codex" aria-labelledby="codex-heading">
+        <p className="development-label">The developing game world</p>
+        <h2 id="codex-heading" className="font-[family-name:var(--font-cinzel)] text-3xl text-white mt-3 mb-4">Arsenal & Codex</h2>
+        <p className="text-[#94a3b8] text-sm leading-relaxed max-w-2xl mb-8">Explore the weapons, enemies, and power systems in Pleroma&apos;s evolving design. These concepts describe the world being built; the game remains in development.</p>
         {/* Tabs */}
         <div className="flex gap-px mb-12 bg-[rgba(212,175,55,0.1)]">
           {tabs.map((tab) => (
             <button
               key={tab}
               onClick={() => setActiveTab(tab)}
-              className={`flex-1 py-3 text-xs tracking-[0.3em] uppercase transition-colors ${
+              aria-pressed={activeTab === tab}
+              className={`flex-1 px-2 py-3 text-[10px] sm:text-xs tracking-[0.08em] sm:tracking-[0.3em] uppercase transition-colors ${
                 activeTab === tab
                   ? "bg-[#d4af37] text-black font-bold"
                   : "bg-[#07040d] text-[#94a3b8] hover:text-[#e2e8f0] hover:bg-[#0d0820]"
@@ -135,6 +142,7 @@ export default function DetailsPage() {
             ))}
           </div>
         )}
+        </section>
       </div>
     </>
   );

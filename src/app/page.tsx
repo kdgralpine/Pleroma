@@ -1,5 +1,5 @@
 ﻿import Link from "next/link";
-import PlaceholderImage from "@/components/PlaceholderImage";
+
 
 const pillars = [
   {
@@ -41,9 +41,9 @@ export default function Home() {
 
         <div className="relative z-10 text-center px-4 max-w-4xl mx-auto">
           <p className="text-[#d4af37] text-xs tracking-[0.5em] uppercase mb-8 opacity-80">
-            A New Dark Action RPG
+            A Dark Action RPG / In Development
           </p>
-          <h1 className="font-[family-name:var(--font-cinzel)] text-7xl sm:text-8xl lg:text-[9rem] font-black leading-none tracking-[0.15em] text-gold-shimmer mb-6">
+          <h1 className="font-[family-name:var(--font-cinzel)] text-[clamp(2.5rem,10vw,9rem)] font-black leading-none tracking-[0.1em] text-gold-shimmer mb-6">
             PLEROMA
           </h1>
           <p className="text-[#94a3b8] text-lg sm:text-xl leading-relaxed max-w-2xl mx-auto mb-12">
@@ -51,13 +51,9 @@ export default function Home() {
             <span className="text-[#e2e8f0]">Ascend to the Pleroma.</span>
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-              <button
-              type="button"
-              disabled
-              className="inline-flex items-center gap-3 bg-[#d4af37] text-black px-8 py-4 text-xs tracking-[0.3em] uppercase font-bold opacity-70 cursor-not-allowed"
-            >
-              Wishlist on Steam
-            </button>
+            <Link href="/details#development" className="inline-flex items-center gap-3 bg-[#d4af37] text-black px-8 py-4 text-xs tracking-[0.2em] uppercase font-bold hover:bg-[#e8c96a] transition-colors">
+              Behind the Game
+            </Link>
             <Link
               href="/overview"
               className="inline-flex items-center gap-2 border border-[rgba(212,175,55,0.4)] text-[#d4af37] px-8 py-4 text-xs tracking-[0.3em] uppercase hover:border-[#d4af37] hover:bg-[rgba(212,175,55,0.05)] transition-all"
@@ -75,49 +71,15 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Showcase */}
-      <section className="py-24 px-4 border-t border-[rgba(212,175,55,0.1)]">
+      <section className="project-preview">
         <div className="max-w-6xl mx-auto">
-          <p className="text-center text-xs tracking-[0.4em] uppercase text-[#d4af37] mb-12">Project Preview</p>
-          <div className="grid gap-6 lg:grid-cols-3 mb-14">
-            <PlaceholderImage
-              title="Story Teaser Art"
-              description="A polished placeholder for the Kenoma world reveal and narrative teaser visuals."
-              badge="Coming Soon"
-            />
-            <PlaceholderImage
-              title="Combat Showcase"
-              description="Placeholder footage for fast-paced battles, Divine Light attacks, and enemy encounters."
-              accent="void"
-              badge="Preview"
-            />
-            <PlaceholderImage
-              title="Custom Forge Mode"
-              description="A placeholder concept for player-created maps, competitive modes, and community content."
-              badge="Concept"
-            />
+          <div className="preview-heading"><div><p className="development-label">One world / Many disciplines</p><h2>Building Pleroma.</h2></div><p>A personal Unreal Engine 5 project by Sebastian Piwko, connecting C++ systems with original 3D assets and a dark fantasy world.</p></div>
+          <div className="development-grid">
+            <article className="development-card"><span className="development-number">01 / ENGINEERING</span><h3>The machinery of the world</h3><p>Ability-based combat, replicated character attributes, data-driven levels, and save validation form the technical work behind the game.</p><Link className="development-link" href="/details#development">Behind the systems &rarr;</Link></article>
+            <article className="development-card"><span className="development-number">02 / ORIGINAL ART</span><h3>From model to environment</h3><p>Original Blender models and environment assets are brought into Unreal Engine to shape the spaces where Pleroma unfolds.</p><Link className="development-link" href="/details#development">The creative workflow &rarr;</Link></article>
+            <article className="development-card"><span className="development-number">03 / WORLD-BUILDING</span><h3>Truth beneath the surface</h3><p>False gods, suppressed history, and an inner divine spark give the developing world its identity, characters, and story direction.</p><Link className="development-link" href="/universe">Enter the universe &rarr;</Link></article>
           </div>
-
-          <div className="rounded-[2rem] border border-[rgba(212,175,55,0.08)] bg-[#0d0820] p-10 text-[#94a3b8]">
-            <div className="flex flex-col lg:flex-row gap-6 lg:items-center lg:justify-between">
-              <div>
-                <p className="text-xs tracking-[0.3em] uppercase text-[#d4af37] mb-3">Launch-ready preview</p>
-                <h2 className="font-[family-name:var(--font-cinzel)] text-3xl text-white mb-4">Designed to look polished and safe for rollout</h2>
-                <p className="max-w-2xl leading-relaxed">
-                  This site is structured for deployment with professional layouts, placeholder media areas, and clean navigation across the game universe.
-                </p>
-              </div>
-              <div>
-                <button
-                  type="button"
-                  disabled
-                  className="inline-flex items-center justify-center rounded-full bg-[#d4af37] px-8 py-3 text-xs uppercase tracking-[0.3em] text-black opacity-80 cursor-not-allowed"
-                >
-                  Request access soon
-                </button>
-              </div>
-            </div>
-          </div>
+          <p className="development-status">Pleroma is in ongoing development. This site introduces the project and its evolving creative direction.</p>
         </div>
       </section>
 
